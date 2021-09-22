@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <link rel="stylesheet" href="../static/css/jam.min.css">
+    <link rel="icon" type="image/png" href="../static/images/logo.png">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-one">
+                <div class="logo">
+                    <img src="../static/images/logo.png" alt="logo">
+                </div>
+                <nav class="nav">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Completed</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Calendlar</a></li>
+                    <li><a href="#">Old</a></li>
+                </nav>
+            </div>
+            <div class="header-two">
+                <div class="daylight">
+                    <span class="daylight-desc desc">daylight progress</span>
+                </div>
+                <div class="weather">
+                    <i class="jam jam-cloud-rain"></i>
+                    <span class="daylight-desc desc">weather</span>
+                </div>
+                <div class="settings">
+                    <i class="jam jam-cog"></i>
+                </div>
+                <!-- <div class="mode">
+                    <input type="checkbox" id="mode">
+                    <label for="mode">
+                        <i class="jam jam-moon-f"></i>
+                        <i class="jam jam-star-f"></i>
+                        <i class="jam jam-star-f"></i>
+                        <i class="jam jam-sun"></i>
+                        <span></span>
+                    </label>
+                </div> -->
+                <div class="notification">
+                    <span>.</span>
+                    <i class="jam jam-bell"></i>
+                    <span class="daylight-desc desc">notification</span>
+                </div>
+                <div class="profile-img">
+                    P
+                </div>
+            </div>
+        </header>
+        <aside>
+            <a href="#" class="sideactive"><i class="jam jam-grid"></i></a>
+            <a href="#"><i class="jam jam-shield-check-f"></i></a>
+            <a href="#"><i class="jam jam-layers-f"></i></a>
+            <a href="#"><i class="jam jam-calendar"></i></a>
+            <a href="#"><i class="jam jam-cloud-thunder"></i></a>
+            <a href="#"></a>
+
+        </aside>
+        <main>
+            <div class="main-header">
+                <h1>Today</h1>
+                <div class="addtask">
+                    <button type="button" id="add-task">
+                        <p>Add task</p>
+                        <p> <i class="jam jam-chevron-down"></i> </p>
+                    </button>
+                </div>
+                <div id="create-form">
+                    <form action="">
+                        <input type="text" required name="task" id="task-title" placeholder="Task title">
+                        <input type="datetime-local" required name="due" id="due">
+                        <button type="submit" id="create-task">
+                            Create
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <h3>Task to do </h3>
+            <hr>
+
+
+            <div class="main-section">
+                <section class="section-one">
+                    <!-- this is used as template in javascript -->
+                    <div style="display: none;" id="card">
+                        <div class="check">
+                            <input type="checkbox" name="done" id="done">
+                        </div>
+                        <div class="inner-card">
+                            <div class="card-desc">
+                                <div class="task">
+                                    <p class="card-header"></p>
+
+                                </div>
+                                <div class="sideinfo">
+                                    <input type="checkbox" style="display: none;" id="important">
+                                    <input type="checkbox" style="display: none;" id="reminder">
+                                    <label for="reminder">
+                                        <i class="jam jam-alarm-clock"></i>
+                                        Reminder
+                                    </label>
+                                    <label for="important">
+                                        important
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="date">
+                                <div class="cardimg">
+                                    P
+                                </div>
+                                <i class="jam jam-alarm-clock"></i>
+                                <div class="timestamp">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="cards">
+                        
+                    </div>
+                </section>
+
+                <section class="section-two">
+
+                </section>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+    <!--javascript-->
+    <script type="module" src="../src/app.js"></script>
+</body>
+</html>
