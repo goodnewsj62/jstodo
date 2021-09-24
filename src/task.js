@@ -58,7 +58,7 @@ export function deleteTask(data={},task="",due=""){
 
 export function finishedTask(data,task){
     const today = new Date().toDateString(); 
-
+    console.log("done")
     if(typeof task == "object"){
         if(today in data["done"]){
             data["done"][today].unshift(task);
@@ -70,4 +70,42 @@ export function finishedTask(data,task){
     }else{
         return "object expected"
     }
+}
+
+
+export function productivityCalc(data){
+    //fuction to run productivity calculation for the day
+    const today = new Date().toDateString(); 
+    const numOfUnfinished = data["todo"][today].length;
+    const numOfFinished = data["done"][today].length;
+    const percentAverage = (numOfFinished / (numOfFinished + numOfUnfinished)) * 100;
+    const averageToDegree = (percentAverage/100) * 360;
+
+    const percentageDiv = document.querySelector(".percentage");
+    const leftProgress = document.querySelector(".lprog");
+    const rightProgress = document.querySelector(".rprog");
+
+    let counter = 0;
+    console.log(numOfUnfinished,numOfFinished,percentAverage,averageToDegree)
+
+    //animation for productivity circle
+    setInterval(()=>{
+        if(counter == Math.round(averageToDegree)){
+            clearInterval();
+        }else{
+            percentageDiv.innerHTML = `${Math.round((averageToDegree/360) * 100)}%`;//add percentage to screen
+            rightProgress.style.transform = `rotate(${(0)}deg)`;//set right progress to zero
+
+
+            if (counter <=180){
+                leftProgress.style.transform = `rotate(${counter}deg)`;
+            }
+            else {
+                rightProgress.style.transform = `rotate(${(counter - 180)}deg)`;//rotation of the other half 180 max
+            }
+            counter += 1;
+            console.log(counter);
+        }
+    },8);
+
 }

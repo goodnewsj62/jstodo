@@ -396,7 +396,7 @@ main hr{
     clip: rect(0px,200px,200px,100px);
 }
 
-.progress-circle .left{
+.progress-circle .right{
     transform: rotateZ(180deg);
 }
 
@@ -419,6 +419,8 @@ main hr{
     border-radius: 10px;
     font-size: 0.9rem;
 }
+
+
 
 /* 
 .mode input{

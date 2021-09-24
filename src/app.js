@@ -1,4 +1,4 @@
-import {updateTask,createTask,deleteTask,finishedTask} from './task.js';
+import {updateTask,productivityCalc,createTask,deleteTask,finishedTask} from './task.js';
 import {checkForDue} from './duetask.js'
 
 document.addEventListener('DOMContentLoaded', function(event){
@@ -98,13 +98,14 @@ document.addEventListener('DOMContentLoaded', function(event){
                     //on check if element is checked add task to completed task, deletes it from todo and
                     const checkSibling = element.parentElement.nextSibling;
                     const task = checkSibling.querySelector(".card-header").innerHTML;
-                    const due = checkSibling.querySelector(".timestamp").innerHTML;
+                    const due = checkSibling.querySelector(".date-created").innerHTML;
                     const currentCard=element.parentElement.parentElement;
                     let taskCompleted = false;
                     
     
                     data["todo"][todaysDate].forEach(function(each){
                         const dueTestReg = new RegExp("("+ due +")");
+                        console.log(due,"hey",each.due);
                         if(each.task === task && dueTestReg.test(each.due)){
                             let response = finishedTask(data,each);
                             if(typeof response === "object"){
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function(event){
                     }
     
                     cards.removeChild(currentCard);
+                    productivityCalc(data);//calculate productivity
                     // uploadData();
                 }
             });
