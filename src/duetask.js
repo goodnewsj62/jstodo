@@ -18,10 +18,7 @@ export function checkForDue(data){
 
                     const cardTask = card.querySelector('.card-header').innerHTML;
                     let carddue = card.querySelector('.date-created').innerHTML;
-                    // carddue = /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}):\d{2}\.\d+Z$/.exec(carddue)[1];
 
-                    console.log(each.due);
-                    
                     const getIndicator = card.querySelector(".indicateDue");
                     if(getIndicator === null){
                         if(cardTask == each.task && carddue === each.due){

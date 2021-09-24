@@ -127,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function(event){
         });
     }
 
-
-
     //check for task due at every 1 second interval
     setInterval(() => {checkForDue(data)},1000);
 });
