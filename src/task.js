@@ -58,7 +58,6 @@ export function deleteTask(data={},task="",due=""){
 
 export function finishedTask(data,task){
     const today = new Date().toDateString(); 
-    console.log("done")
     if(typeof task == "object"){
         if(today in data["done"]){
             data["done"][today].unshift(task);
@@ -86,7 +85,6 @@ export function productivityCalc(data){
     const rightProgress = document.querySelector(".rprog");
 
     let counter = 0;
-    console.log(numOfUnfinished,numOfFinished,percentAverage,averageToDegree)
 
     //animation for productivity circle
     setInterval(()=>{
@@ -104,7 +102,6 @@ export function productivityCalc(data){
                 rightProgress.style.transform = `rotate(${(counter - 180)}deg)`;//rotation of the other half 180 max
             }
             counter += 1;
-            console.log(counter);
         }
     },8);
 

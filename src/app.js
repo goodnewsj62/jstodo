@@ -1,6 +1,6 @@
 import {updateTask,productivityCalc,createTask,deleteTask,finishedTask} from './task.js';
 import {checkForDue} from './duetask.js'
-
+import {getweather} from './weather.js'
 document.addEventListener('DOMContentLoaded', function(event){
     
     
@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function(event){
     
                     data["todo"][todaysDate].forEach(function(each){
                         const dueTestReg = new RegExp("("+ due +")");
-                        console.log(due,"hey",each.due);
                         if(each.task === task && dueTestReg.test(each.due)){
                             let response = finishedTask(data,each);
                             if(typeof response === "object"){
@@ -131,6 +130,41 @@ document.addEventListener('DOMContentLoaded', function(event){
 
     //check for task due at every 1 second interval
     setInterval(() => {checkForDue(data)},1000);
+
+    getweather()
+        .then(data => JSON.parse(data))
+        .then(data => updateWeather(data));
+
+
+    function updateWeather(data){
+        const weatherImg =  document.querySelector(".weather-img");
+        const dummyIcon = document.querySelector(".jam-cloud-rain");
+        const weatherP = document.querySelector(".weather-desc");
+
+        if ("weather" in data){
+
+            const icon =data["weather"][0].icon;
+            const main = data["weather"][0].main;
+            if(icon){
+                weatherImg.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+                weatherImg.style.display = "block";
+                dummyIcon.style.display = "none";
+            }
+            else{
+                weatherImg.style.display = "none";
+                dummyIcon.style.display = "block";
+            }
+
+            if(main){
+                weatherP.innerHTML=main;
+            }
+            else{
+                weatherP.innerHTML="";
+            }
+        }
+
+        return data;
+    }
 });
 
 

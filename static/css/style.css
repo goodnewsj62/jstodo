@@ -75,6 +75,16 @@ a{
     position: relative;
     margin-right:1.5rem;
 }
+
+.weather .weather-icon{
+    display: flex;
+    align-items: center;
+}
+.weather-icon p{
+    color: #6c757d;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 .profile-img{
     height: 30px;
     width: 30px;
